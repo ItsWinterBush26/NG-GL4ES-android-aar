@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'git.artdeell.oalmodule'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 21
+        externalNativeBuild {
+            cmake {
+                arguments.add("-DALSOFT_BACKEND_PIPEWIRE=OFF")
+                arguments.add("-DALSOFT_BACKEND_PULSEAUDIO=OFF")
+                arguments.add("-DALSOFT_BACKEND_ALSA=OFF")
+                arguments.add("-DALSOFT_BACKEND_OSS=OFF")
+                arguments.add("-DALSOFT_BACKEND_SOLARIS=OFF")
+                arguments.add("-DALSOFT_BACKEND_SNDIO=OFF")
+                arguments.add("-DALSOFT_BACKEND_JACK=OFF")
+                arguments.add("-DALSOFT_BACKEND_OBOE=ON")
+                arguments.add("-DALSOFT_BACKEND_OPENSL=ON")
+                arguments.add("-DALSOFT_BACKEND_SDL2=OFF")
+                arguments.add("-DALSOFT_BACKEND_SDL3=OFF")
+                arguments.add("-DALSOFT_BACKEND_WAVE=OFF")
+                arguments.add("-DCMAKE_C_FLAGS=-O3")
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "openal-soft/CMakeLists.txt"
+        }
+    }
+}
