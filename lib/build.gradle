@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
 
 android {
@@ -22,6 +23,9 @@ android {
                 arguments.add("-DALSOFT_BACKEND_SDL2=OFF")
                 arguments.add("-DALSOFT_BACKEND_SDL3=OFF")
                 arguments.add("-DALSOFT_BACKEND_WAVE=OFF")
+                arguments.add("-DALSOFT_REQUIRE_OBOE=ON")
+                arguments.add("-DALSOFT_REQUIRE_OPENSL=ON")
+                arguments.add("-DOBOE_SOURCE=${new File(projectDir.absoluteFile, "oboe").getAbsolutePath()}")
                 arguments.add("-DCMAKE_C_FLAGS=-O3")
             }
         }
@@ -30,6 +34,29 @@ android {
     externalNativeBuild {
         cmake {
             path "openal-soft/CMakeLists.txt"
+        }
+    }
+
+    buildFeatures {
+        prefab true
+    }
+
+    publishing {
+        singleVariant("release")
+    }
+}
+
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.MojoLauncher'
+            artifactId = 'alsoft-android-aar'
+            version = '1.24.3'
+
+            afterEvaluate {
+                from components.release
+            }
         }
     }
 }
