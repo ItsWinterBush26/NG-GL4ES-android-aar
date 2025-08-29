@@ -9,7 +9,8 @@ android {
 
     defaultConfig {
         minSdk 21
-    
+    }
+
     externalNativeBuild {
         cmake {
             path "NG-GL4ES/CMakeLists.txt"
@@ -25,7 +26,6 @@ android {
     }
 }
 
-
 publishing {
     publications {
         release(MavenPublication) {
@@ -38,5 +38,8 @@ publishing {
             }
         }
     }
-  }
+}
+
+dependencies {
+    implementation "com.github.BZLZHH:NG-GL4ES:0.4.1"
 }
