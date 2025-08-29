@@ -1,0 +1,8 @@
+jdk:
+  - openjdk17
+
+git:
+  submodules: true
+
+before_install:
+  - git submodule update --init --recursive
