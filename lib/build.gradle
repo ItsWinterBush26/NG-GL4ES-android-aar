@@ -4,36 +4,15 @@ plugins {
 }
 
 android {
-    namespace 'git.artdeell.oalmodule'
+    namespace 'com.bzlzhh.ng_gl4es'
     compileSdk 36
 
     defaultConfig {
         minSdk 21
-        externalNativeBuild {
-            cmake {
-                arguments.add("-DALSOFT_BACKEND_PIPEWIRE=OFF")
-                arguments.add("-DALSOFT_BACKEND_PULSEAUDIO=OFF")
-                arguments.add("-DALSOFT_BACKEND_ALSA=OFF")
-                arguments.add("-DALSOFT_BACKEND_OSS=OFF")
-                arguments.add("-DALSOFT_BACKEND_SOLARIS=OFF")
-                arguments.add("-DALSOFT_BACKEND_SNDIO=OFF")
-                arguments.add("-DALSOFT_BACKEND_JACK=OFF")
-                arguments.add("-DALSOFT_BACKEND_OBOE=ON")
-                arguments.add("-DALSOFT_BACKEND_OPENSL=ON")
-                arguments.add("-DALSOFT_BACKEND_SDL2=OFF")
-                arguments.add("-DALSOFT_BACKEND_SDL3=OFF")
-                arguments.add("-DALSOFT_BACKEND_WAVE=OFF")
-                arguments.add("-DALSOFT_REQUIRE_OBOE=ON")
-                arguments.add("-DALSOFT_REQUIRE_OPENSL=ON")
-                arguments.add("-DOBOE_SOURCE=${new File(projectDir.absoluteFile, "oboe").getAbsolutePath()}")
-                arguments.add("-DCMAKE_C_FLAGS=-O3")
-            }
-        }
-    }
-
+    
     externalNativeBuild {
         cmake {
-            path "openal-soft/CMakeLists.txt"
+            path "NG-GL4ES/CMakeLists.txt"
         }
     }
 
@@ -51,8 +30,8 @@ publishing {
     publications {
         release(MavenPublication) {
             groupId = 'com.github.MojoLauncher'
-            artifactId = 'alsoft-android-aar'
-            version = '1.24.3'
+            artifactId = 'ng-gl4es-android-aar'
+            version = '0.4.1'
 
             afterEvaluate {
                 from components.release
