@@ -39,7 +39,4 @@ publishing {
         }
     }
 }
-
-dependencies {
-    implementation "com.github.BZLZHH:NG-GL4ES:0.4.1"
 }
